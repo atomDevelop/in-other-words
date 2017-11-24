@@ -1,7 +1,7 @@
 function inOtherWords(dataSet, unique, format) {
   q = []
   for (const l in format) {
-    q.push({outputKey: l, inputKey: format[l][0], sum: 0, method: format[l][1], list: []})
+    q.push({outputKey: l, inputKey: format[l].target, sum: 0, method: format[l].method, list: []})
   }
   var output = []
   var sumNum
