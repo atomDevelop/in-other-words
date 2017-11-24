@@ -1,0 +1,23 @@
+{
+  "name": "in-other-words",
+  "version": "1.0.0",
+  "description": "kind of mapreduce",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mapreduce"
+  ],
+  "author": "atom.develop",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DawitJeromeJung/in-other-words.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DawitJeromeJung/in-other-words/issues"
+  },
+  "homepage": "https://github.com/DawitJeromeJung/in-other-words#readme",
+  "dependencies": {}
+}
