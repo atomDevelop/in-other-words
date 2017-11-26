@@ -1,49 +1,61 @@
-function inOtherWords(dataSet, unique, format) {
-  q = []
+function inOtherWords(dataSet, groupBy, format) {
+  var q = []
+  var output = {}
   for (const l in format) {
-    q.push({outputKey: l, inputKey: format[l].target, sum: 0, method: format[l].method, list: []})
+    if (format[l].method != "average" && format[l].method != "sum" && format[l].method != "list"){
+      console.error("method error: " + format[l].method)
+      return {}
+    }
+    q.push({outputKey: l, inputKey: format[l].key, method: format[l].method})
   }
-  var output = []
-  var sumNum
-  function update(){
-    var temp = {}
-    temp[unique] = dataSet[i-1][unique]
-    temp["count"] = sumNum
+  function create(row) {
+    output[row[groupBy]] = {}
     for (const j in q) {
-      if(q[j].method === "list") {
-        temp[q[j].outputKey] = q[j].list
-      }else{
-        let dvd = (q[j].method === "average") ? sumNum : 1
-        temp[q[j].outputKey] = q[j].sum/dvd
+      if (!row.hasOwnProperty(q[j].inputKey)){
+        return false
+      }
+      if (q[j].method === "list"){
+        output[row[groupBy]][q[j].outputKey] = [row[q[j].inputKey]]
+      }else if(q[j].method === "average" || q[j].method === "sum") {
+        output[row[groupBy]][q[j].outputKey] = row[q[j].inputKey]
       }
     }
-    output.push(temp)
+    output[row[groupBy]].length = 1
+    return true
   }
-  for (var i = 0; i < dataSet.length; i++) {
-    if (i == 0 || dataSet[i][unique] != dataSet[i-1][unique]) {
-      if (i > 0) {
-        update()
+  function update(row) {
+    for (const j in q) {
+      if (!row.hasOwnProperty(q[j].inputKey)){
+        return false
       }
-      sumNum = 1
-      for (const k in q) {
-        if (q[k].method === "list") {
-          q[k].list = [dataSet[i][q[k].inputKey]]
-        } else {
-          q[k].sum = dataSet[i][q[k].inputKey]
-        }
+      if (q[j].method === "list"){
+        output[row[groupBy]][q[j].outputKey].push(row[q[j].inputKey])
+      }else if(q[j].method === "sum") {
+        output[row[groupBy]][q[j].outputKey] += row[q[j].inputKey]
+      }else if(q[j].method === "average") {
+        output[row[groupBy]][q[j].outputKey] = (output[row[groupBy]][q[j].outputKey]*output[row[groupBy]].length+row[q[j].inputKey])/(output[row[groupBy]].length+1)
       }
-    } else {
-      sumNum++
-      for (const k in q) {
-        if (q[k].method === "list") {
-          q[k].list.push(dataSet[i][q[k].inputKey])
-        } else {
-          q[k].sum += dataSet[i][q[k].inputKey]
-        }
+    }
+    output[row[groupBy]].length += 1
+    return true
+  }
+  for (const i in dataSet) {
+    if(!dataSet[i].hasOwnProperty(groupBy)){
+      console.error("groupBy value error: " + groupBy)
+      return {}
+    }
+    if(output.hasOwnProperty(dataSet[i][groupBy])){
+      if(!update(dataSet[i])){
+        console.error("inputKey error")
+        return {}
+      }
+    }else{
+      if(!create(dataSet[i])){
+        console.error("inputKey error")
+        return {}
       }
     }
   }
-  update()
   return output
 }
 

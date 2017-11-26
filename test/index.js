@@ -1,58 +1,43 @@
 var inOtherWords = require("../index")
 
 var testResult = [
-  {date: 171201, timeSpent: 21, score: 7},
-  {date: 171201, timeSpent: 23, score: 6},
-  {date: 171201, timeSpent: 21, score: 7},
-  {date: 171201, timeSpent: 26, score: 8},
-  {date: 171201, timeSpent: 19, score: 6},
-  {date: 171201, timeSpent: 25, score: 7},
-  {date: 171201, timeSpent: 24, score: 6},
-  {date: 171201, timeSpent: 26, score: 5},
-  {date: 171201, timeSpent: 27, score: 7},
-  {date: 171201, timeSpent: 25, score: 8},
-  {date: 171201, timeSpent: 24, score: 7},
-  {date: 171201, timeSpent: 27, score: 4},
-  {date: 171201, timeSpent: 28, score: 5},
-  {date: 171201, timeSpent: 26, score: 8},
-  {date: 171201, timeSpent: 28, score: 6},
-  {date: 171201, timeSpent: 27, score: 5},
-  {date: 171201, timeSpent: 29, score: 8},
-  {date: 171201, timeSpent: 28, score: 9},
-  {date: 171201, timeSpent: 30, score: 8},
-  {date: 171201, timeSpent: 29, score: 7},
-  {date: 171201, timeSpent: 29, score: 6},
-  {date: 171208, timeSpent: 33, score: 7},
-  {date: 171208, timeSpent: 34, score: 8},
-  {date: 171208, timeSpent: 26, score: 5},
-  {date: 171208, timeSpent: 30, score: 9},
-  {date: 171208, timeSpent: 32, score: 8},
-  {date: 171208, timeSpent: 35, score: 7},
-  {date: 171208, timeSpent: 29, score: 4},
-  {date: 171208, timeSpent: 33, score: 6},
-  {date: 171208, timeSpent: 31, score: 5},
-  {date: 171208, timeSpent: 33, score: 8},
-  {date: 171208, timeSpent: 32, score: 7},
-  {date: 180315, timeSpent: 34, score: 3},
-  {date: 180315, timeSpent: 32, score: 9},
-  {date: 180315, timeSpent: 33, score: 8},
-  {date: 180315, timeSpent: 35, score: 6},
-  {date: 180315, timeSpent: 34, score: 6},
-  {date: 180315, timeSpent: 32, score: 7},
-  {date: 180315, timeSpent: 33, score: 5},
-  {date: 180315, timeSpent: 31, score: 8},
-  {date: 180315, timeSpent: 33, score: 4},
-  {date: 180315, timeSpent: 34, score: 6},
-  {date: 180315, timeSpent: 38, score: 7},
-  {date: 180322, timeSpent: 35, score: 6},
-  {date: 180322, timeSpent: 38, score: 6},
-  {date: 180322, timeSpent: 32, score: 9},
-  {date: 180322, timeSpent: 33, score: 5},
-  {date: 180322, timeSpent: 39, score: 8},
-  {date: 180322, timeSpent: 33, score: 4},
-  {date: 180322, timeSpent: 37, score: 6}
+  {date: "2018-03-01", timeSpent: 60, score: 7, student: "Kim"},
+  {date: "2018-03-01", timeSpent: 67, score: 6, student: "Jung"},
+  {date: "2018-03-01", timeSpent: 63, score: 7, student: "Choi"},
+  {date: "2018-03-01", timeSpent: 65, score: 7, student: "Shin"},
+  {date: "2018-03-01", timeSpent: 62, score: 6, student: "Park"},
+  {date: "2018-03-01", timeSpent: 64, score: 7, student: "Kang"},
+  {date: "2018-03-01", timeSpent: 74, score: 6, student: "Lee"},
+  {date: "2018-03-08", timeSpent: 63, score: 7, student: "Kang"},
+  {date: "2018-03-08", timeSpent: 64, score: 8, student: "Lee"},
+  {date: "2018-03-08", timeSpent: 61, score: 6, student: "Choi"},
+  {date: "2018-03-08", timeSpent: 62, score: 8, student: "Kim"},
+  {date: "2018-03-08", timeSpent: 61, score: 7, student: "Park"},
+  {date: "2018-03-08", timeSpent: 60, score: 7, student: "Shin"},
+  {date: "2018-03-08", timeSpent: 62, score: 8, student: "Jung"},
+  {date: "2018-03-15", timeSpent: 59, score: 3, student: "Shin"},
+  {date: "2018-03-15", timeSpent: 61, score: 8, student: "Jung"},
+  {date: "2018-03-15", timeSpent: 59, score: 6, student: "Lee"},
+  {date: "2018-03-15", timeSpent: 65, score: 6, student: "Choi"},
+  {date: "2018-03-15", timeSpent: 62, score: 7, student: "Kang"},
+  {date: "2018-03-15", timeSpent: 64, score: 9, student: "Park"},
+  {date: "2018-03-22", timeSpent: 60, score: 6, student: "Choi"},
+  {date: "2018-03-22", timeSpent: 57, score: 6, student: "Lee"},
+  {date: "2018-03-22", timeSpent: 55, score: 9, student: "Park"},
+  {date: "2018-03-22", timeSpent: 57, score: 7, student: "Shin"},
+  {date: "2018-03-22", timeSpent: 59, score: 8, student: "Kang"},
+  {date: "2018-03-22", timeSpent: 57, score: 8, student: "Jung"},
+  {date: "2018-03-22", timeSpent: 57, score: 7, student: "Kim"}
 ]
 
-var result = inOtherWords(testResult, "date", {sumTime: {target: "timeSpent", method:"sum"}, avgTime: {target: "timeSpent", method:"average"}, avgScore: {target: "score", method:"average"}, scoreList: {target: "score", method:"list"}})
-
-console.log(result)
+var result1 = inOtherWords(testResult, "date", {
+  avgTime: {key: "timeSpent", method: "average"},
+  sumScore: {key: "score", method:"sum"},
+  students: {key: "student", method:"list"}
+})
+var result2 = inOtherWords(testResult, "student", {
+  sumTime: {key: "timeSpent", method: "sum"},
+  avgScore: {key: "score", method: "average"}
+})
+console.log(result1)
+console.log(result2)
