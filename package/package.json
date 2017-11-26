@@ -1,16 +1,13 @@
 {
   "name": "in-other-words",
-  "version": "1.0.4",
+  "version": "1.0.0",
   "description": "kind of mapreduce",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "mapreduce",
-    "reorganize",
-    "JSON",
-    "visualize"
+    "mapreduce"
   ],
   "files": [
     "index.js"

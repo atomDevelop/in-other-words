@@ -1,4 +1,5 @@
-test/
-.git*
-node_modules/
-README.md
+/test/
+/.git/
+/.npmignore
+/.git*
+/node_modules/
