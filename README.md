@@ -92,11 +92,14 @@ inOtherWords(dataSet, groupBy, format)
 ```
 The above examples
 ```sh
-var result = inOtherWords(testResult, "date", {
-    sumTime: {target: "timeSpent", method: "sum"},
-    avgTime: {target: "timeSpent", method: "average"},
-    avgScore: {target: "score", method: "average"},
-    scoreList: {target: "score", method: "list"}
+var result1 = inOtherWords(testResult, "date", {
+  avgTime: {key: "timeSpent", method: "average"},
+  sumScore: {key: "score", method:"sum"},
+  students: {key: "student", method:"list"}
+})
+var result2 = inOtherWords(testResult, "student", {
+  sumTime: {key: "timeSpent", method: "sum"},
+  avgScore: {key: "score", method: "average"}
 })
 ```
 
