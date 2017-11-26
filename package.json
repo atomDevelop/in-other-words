@@ -1,6 +1,6 @@
 {
   "name": "in-other-words",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "kind of mapreduce",
   "main": "index.js",
   "scripts": {

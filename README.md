@@ -88,6 +88,7 @@ npm install in-other-words
 
 ### How to use
 ```sh
+var inOtherWords = require("../index")
 inOtherWords(dataSet, groupBy, format)
 ```
 The above examples
