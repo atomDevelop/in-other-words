@@ -1,6 +1,6 @@
 # In-other-words
 
-In-other-words is a simple tool to reduce or reorganize JSON data. This version is for commonJS.
+In-other-words is a simple tool to reduce or reorganize JSON data.
 Let’s suppose you have results of tests and they are stored as follows.
 ```sh
 var testResult = [
@@ -88,7 +88,7 @@ npm install in-other-words
 
 ### How to use
 ```sh
-var inOtherWords = require("../index")
+import inOtherWords from "in-other-words"
 inOtherWords(dataSet, groupBy, format)
 ```
 The above examples
